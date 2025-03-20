@@ -26,7 +26,9 @@ public class Responder {
     }
 
     @PutMapping("/updateEmployee/{id}")
-    public ResponseEntity<String> updateEmployee(@PathVariable("id") Integer id, Employee e){
+    public ResponseEntity<String> updateEmployee(@PathVariable("id") Integer id,@RequestBody Employee e){
+        System.out.println("hiii");
+        System.out.println(e);
         e=employeeRepository.changeEmployee(id,e);
         if(e==null){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
